@@ -31,7 +31,9 @@
     "react-native-screens": "^3.14.1",
     		"react-native-reanimated-carousel": "3.0.0",
 		"@types/react": "~18.0.27",
-		"typescript": "^4.9.4"
+		"typescript": "^4.9.4",
+    "@unbox-infinity/clx-auth-myunbox-react-native": "git+file:///Users/abdellahboumaiza/Code/unbox/biomakers_auth/clx-auth-myunbox-react-native/.git#3af4c659330bb85471091afb0f6a68cf356236f3"
+
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
