@@ -17,6 +17,11 @@ import {
   RectButton,
 } from "react-native-gesture-handler";
 
+import {
+  deeplinkingConfigScreen,
+  MyUnboxAuthProvider,
+} from '@unbox-infinity/clx-auth-myunbox-react-native';
+
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
 
@@ -30,44 +35,64 @@ const App = () => {
     return null;
   }
 
+  console.log("App.tsx: hideSplashScreen: ", hideSplashScreen);
+  console.log("deepLinkingConfigScreen: ", deeplinkingConfigScreen);
+
   return (
     <>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <NavigationContainer>
-          {hideSplashScreen ? (
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen
-                name="ClosedLoopFirstPage"
-                component={ClosedLoopFirstPage}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="EmptyState"
-                component={EmptyState}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Frame"
-                component={Frame}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Frame1"
-                component={Frame1}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="HRVWidget"
-                component={HRVWidget}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Frame2"
-                component={Frame2}
-                options={{ headerShown: false }}
-              />
-            </Stack.Navigator>
-          ) : null}
+        <NavigationContainer
+          fallback={<Text>Loading...</Text>}
+          linking={{
+            enabled: true,
+            prefixes: ['AppNameHere://', 'appnamehere://'],
+            config: {
+              screens: {
+                ...deeplinkingConfigScreen, // --> add the deeplinking config for myunbox here
+              },
+            },
+          }}
+          >          
+          
+          <MyUnboxAuthProvider>
+
+            {hideSplashScreen ? (
+              <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen
+                  name="ClosedLoopFirstPage"
+                  component={ClosedLoopFirstPage}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="EmptyState"
+                  component={EmptyState}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Frame"
+                  component={Frame}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Frame1"
+                  component={Frame1}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="HRVWidget"
+                  component={HRVWidget}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Frame2"
+                  component={Frame2}
+                  options={{ headerShown: false }}
+                />
+              </Stack.Navigator>
+            ) : null}
+
+          </MyUnboxAuthProvider>
+
         </NavigationContainer>
       </GestureHandlerRootView>
     </>
