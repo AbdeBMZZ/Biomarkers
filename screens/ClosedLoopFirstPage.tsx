@@ -22,30 +22,6 @@ const ClosedLoopFirstPage = () => {
 
   return (
     <View style={styles.closedLoopFirstPage}>
-      <View style={[styles.iosToolBars, styles.iosToolBarsFlexBox]}>
-        <Text style={[styles.time, styles.timeTypo]}>9:41</Text>
-        <View style={styles.dynamicIsland} />
-        <View style={styles.status}>
-          <Image
-            style={styles.cellularIcon}
-            contentFit="cover"
-            source={require("../assets/cellular2.png")}
-          />
-          <Image
-            style={styles.wifiIcon}
-            contentFit="cover"
-            source={require("../assets/wifi2.png")}
-          />
-          <View style={styles.batteryPercentage}>
-            <View style={[styles.percent, styles.percentPosition]} />
-            <Image
-              style={[styles.batteryIcon, styles.percentPosition]}
-              contentFit="cover"
-              source={require("../assets/battery3.png")}
-            />
-          </View>
-        </View>
-      </View>
       <View style={[styles.navigationBottom, styles.buttonShadowBox]}>
         <View style={[styles.appNavigationBottom, styles.iosToolBarsFlexBox]}>
           <View style={styles.iconFlexBox}>
@@ -112,7 +88,6 @@ const ClosedLoopFirstPage = () => {
           style={styles.carousel}
           width={368}
           mode="normal"
-          autoPlay={true}
           loop={true}
           pagingEnabled={true}
           data={frameCarouselItems}
